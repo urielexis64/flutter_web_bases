@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 import 'package:flutter_application_1/ui/pages/counter_page.dart';
 import 'package:flutter_application_1/ui/pages/counter_provider_page.dart';
 import 'package:flutter_application_1/ui/pages/page_404.dart';
@@ -21,10 +24,15 @@ class RouteGenerator {
       pageBuilder: (_, __, ___) => child,
       transitionDuration: Duration(milliseconds: 300),
       transitionsBuilder: (_, Animation<double> animation, __, ___) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
+        return kIsWeb
+            ? FadeTransition(
+                opacity: animation,
+                child: child,
+              )
+            : ScaleTransition(
+                scale: animation,
+                child: child,
+              );
       },
     );
   }

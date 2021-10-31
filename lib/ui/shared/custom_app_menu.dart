@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/locator.dart';
+import 'package:flutter_application_1/services/navigation_service.dart';
 import 'package:flutter_application_1/ui/pages/custom_flat_button.dart';
 
 class CustomAppMenu extends StatelessWidget {
@@ -13,17 +15,19 @@ class CustomAppMenu extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomFlatButton(
-            onPressed: () {},
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/stateful'),
             child: Text('Stateful Counter'),
             color: Colors.black,
           ),
           CustomFlatButton(
-            onPressed: () {},
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/provider'),
             child: Text('Provider Counter'),
             color: Colors.black,
           ),
           CustomFlatButton(
-            onPressed: () {},
+            onPressed: () => locator<NavigationService>().navigateTo('/xd'),
             child: Text('Another Counter'),
             color: Colors.black,
           ),

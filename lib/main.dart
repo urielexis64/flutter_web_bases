@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/pages/counter_page.dart';
+import 'package:flutter_application_1/locator.dart';
+import 'package:flutter_application_1/router/route_generator.dart';
+import 'package:flutter_application_1/services/navigation_service.dart';
+import 'package:flutter_application_1/ui/layout/main_layout_page.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  setupLocator();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -10,8 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'RutasApp',
       debugShowCheckedModeBanner: false,
       initialRoute: '/stateful',
-      routes: {
-        '/stateful': (_) => CounterPage(),
+      onGenerateRoute: RouteGenerator.generateRouter,
+      navigatorKey: locator<NavigationService>().navigatorKey,
+      builder: (_, child) {
+        return MainLayoutPage(child: child ?? CircularProgressIndicator());
       },
     );
   }

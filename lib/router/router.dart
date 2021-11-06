@@ -9,6 +9,8 @@ class Flurorouter {
   static void configureRoutes() {
     router.define('/',
         handler: _counterHandler, transitionType: TransitionType.fadeIn);
+    router.define('/stateful/:base',
+        handler: _counterHandler, transitionType: TransitionType.fadeIn);
     router.define('/stateful',
         handler: _counterHandler, transitionType: TransitionType.fadeIn);
     router.define('/provider',
@@ -17,10 +19,16 @@ class Flurorouter {
   }
 
   // Handlers
-  static Handler _counterHandler =
-      Handler(handlerFunc: (context, params) => CounterView());
-  static Handler _providerHandler =
-      Handler(handlerFunc: (context, params) => CounterProviderView());
+  static Handler _counterHandler = Handler(handlerFunc: (context, params) {
+    int base = int.tryParse(params['base']?.first ?? '') ?? 5;
+    return CounterView(base: base);
+  });
+
+  static Handler _providerHandler = Handler(handlerFunc: (context, params) {
+    int base = int.tryParse(params['q']?.first ?? '') ?? 5;
+    return CounterProviderView(base: base);
+  });
+
   static Handler _pageNotFound =
       Handler(handlerFunc: (context, params) => View404());
 }

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/provider/counter_provider.dart';
 import 'package:flutter_application_1/ui/pages/custom_flat_button.dart';
-import 'package:flutter_application_1/ui/shared/custom_app_menu.dart';
 import 'package:provider/provider.dart';
 
 class CounterProviderView extends StatelessWidget {
+  final int base;
+
+  const CounterProviderView({Key? key, required this.base}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => CounterProvider(), child: _CounterProviderBody());
+        create: (context) => CounterProvider(base),
+        child: _CounterProviderBody());
   }
 }
 

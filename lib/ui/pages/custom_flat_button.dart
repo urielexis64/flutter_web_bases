@@ -14,6 +14,7 @@ class CustomFlatButton extends StatelessWidget {
     return TextButton(
         style: TextButton.styleFrom(
           primary: color ?? Colors.pink,
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
         onPressed: onPressed,
         child: child);

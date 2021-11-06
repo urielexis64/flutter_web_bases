@@ -26,7 +26,6 @@ class _TabletDesktopMenu extends StatelessWidget {
       height: 50,
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomFlatButton(
             onPressed: () =>
@@ -43,6 +42,12 @@ class _TabletDesktopMenu extends StatelessWidget {
           CustomFlatButton(
             onPressed: () => locator<NavigationService>().navigateTo('/xd'),
             child: Text('Another Counter'),
+            color: Colors.black,
+          ),
+          CustomFlatButton(
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/provider?q=200'),
+            child: Text('Provider 200'),
             color: Colors.black,
           ),
         ],
@@ -63,7 +68,6 @@ class _MobileMenu extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomFlatButton(
             onPressed: () =>
